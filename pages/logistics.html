@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AdminLTE | Dashboard</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- font Awesome -->
+        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <style>
+            tbody th{
+                text-align: center;
+                display: table-cell;
+                width: 300px;
+            }
+        </style>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="skin-blue">
+        <!-- header logo: style can be found in header.less -->
+        <header class="header">
+            <a href="../index.html" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                AdminLTE
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span class="nameUser"><i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header bg-light-blue">
+                                    <img src="../img/avatar3.png" class="img-circle" alt="User Image" />
+                                    <p class="nameUser"></p>
+                                    <small class="typeUser"></small>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a role="button"  class="btn btn-default btn-flat" id="btnLogout">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">                
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="../img/avatar3.png" class="img-circle" alt="User Image" />
+                        </div>
+                        <div class="pull-left info">
+                            <p>Hello, <span class="nameUser"></span></p>
+
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                    <form onSubmit="return false;" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" id="key" class="form-control" placeholder="Search..."/>
+                            <span class="input-group-btn">
+                                <button id='btnSearch' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li>
+                            <a  href="farm.html">
+                                <i class="fa  fa-sign-in"></i> <span>养殖企业</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="butcher.html">
+                                <i class="fa  fa-cutlery"></i> <span>屠宰加工企业</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="market.html">
+                                <i class="fa  fa-shopping-cart"></i> <span>销售企业</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="logistics.html">
+                                <i class="fa fa-truck"></i> <span>羊肉物流及市场准入企业</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        羊肉物流及市场准入企业溯源信息
+                    </h1>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">羊肉物流及市场准入企业溯源信息</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body table-responsive">
+                                    <table id="tableInfo" class="table table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th colspan="2" style="text-align: center">条码</th>
+                                            <th id="id"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <th rowspan="7">
+                                                羊肉物流及市场准入企业溯源信息
+                                            </th>
+                                            <th>
+                                                起始地企业名称
+                                            </th>
+                                            <td id="startName">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                目的地企业名称
+                                            </th>
+                                            <td id="endName">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                运输车辆车牌号
+                                            </th>
+                                            <td id="=carNum">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                驾驶员
+                                            </th>
+                                            <td id="carDriver">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                运输日期
+                                            </th>
+                                            <td id="transDate">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                车辆消毒证号
+                                            </th>
+                                            <td id="carDisId">
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                运输温度
+                                            </th>
+                                            <td id="transTemp">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+
+
+        <!-- jQuery 2.0.2 -->
+        <script src="../js/jquery.js"></script>
+        <!-- Bootstrap -->
+        <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- AdminLTE App -->
+        <script src="../js/AdminLTE/app.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function () {
+                initPage();
+
+                $("#btnSearch").click(function () {
+                    var key = $("#key").val();
+                    $.ajax({
+                        url: "../php/search.php",
+                        type: "POST",
+                        data: {'key': key, 'para': 'market'},
+                        dataType: "json",
+                        success: function (data) {
+                            if (data == "Error"){
+                                alertMsg("查询出错，请联系管理人员！", "danger");
+                            }
+                            else {
+                                    $("#tableInfo").find("[id]").each(function () {
+                                    $(this).text(data[$(this).attr('id')]);
+                                });
+                            }
+
+                        }
+                    })
+                });
+            })
+        </script>
+
+    </body>
+</html>

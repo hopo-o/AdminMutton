@@ -1,3 +1,63 @@
+/**
+ * add in 2016-5-5
+ * by hopo
+ * */
+
+function initPage() {
+    $.ajax({
+        url: "../php/init_page.php",
+        type: "POST",
+        dataType: 'json',
+        success: function (data) {
+            if (data == '-2')
+            {
+                window.location.href = "../index.html";
+            }
+            $(".nameUser").text(data.fullname);
+            $(".typeUser").text(function(userType){
+                if (userType == 'optionsEnt')
+                    return '企业人员';
+                else 
+                    return '消费者';
+            }(data.usertype));
+        }
+    })
+}
+
+//显示提示信息
+function alertMsg(msg, type)
+{
+    var content = "<div id='divAlert' class='alert alert-" + type + "'>" +
+        "<a href='#' class='close' data-dismiss='alert'>&times;</a> " +
+        msg +
+        "</div>";
+    $("section.content").first().before(content);
+}
+
+//注销
+$("#btnLogout").click(function () {
+    $.ajax({
+        url : "../php/logout.php",
+        type : "GET",
+        cache : false,
+        dataType : 'json',
+        success : function(data){
+            if(data == 0)
+            {
+                alertMsg("注销成功", "success")
+            }
+            else
+            {
+                alertMsg("注销失败，请重试", "danger");
+            }
+
+            setTimeout('window.location.reload()', 600);
+        }
+    })
+});
+
+
+
 /*!
  * Author: Abdullah A Almsaeed
  * Date: 4 Jan 2014
